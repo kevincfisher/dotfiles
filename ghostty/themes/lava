@@ -1,0 +1,39 @@
+# Background and foreground
+background = #232323
+foreground = #ffffff
+
+# Cursor
+cursor-color = #ffffff
+cursor-text = #232323
+
+# Selection
+selection-background = #808080
+selection-foreground = #ffffff
+
+# Standard colors (0-7)
+palette = 0=#232323
+palette = 1=#800000
+palette = 2=#00ff00
+palette = 3=#BF9C30
+palette = 4=#00a6b2
+palette = 5=#BF5B30
+palette = 6=#008080
+palette = 7=#ffffff
+
+# Bright colors (8-15)
+palette = 8=#808080
+palette = 9=#FF4C00
+palette = 10=#00ff00
+palette = 11=#FFDD73
+palette = 12=#00a6b2
+palette = 13=#FF9400
+palette = 14=#00a6b2
+palette = 15=#ffffff
+
+# Additional colors for better syntax highlighting
+palette = 16=#FF9400
+palette = 17=#FFC000
+palette = 18=#A63100
+palette = 19=#FFC473
+palette = 20=#B3A06D
+palette = 21=#808000

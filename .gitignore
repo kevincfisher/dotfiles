@@ -1,0 +1,8 @@
+   .ssh/
+   .gnupg/
+   *.pem
+   *.key
+   
+   # OS files
+   .DS_Store
+   Thumbs.db

@@ -1,0 +1,20 @@
+theme=lava
+background-opacity=0.80
+background-blur=20
+
+font-family=FiraCode Nerd Font Mono
+font-size=14
+
+cursor-style=block
+cursor-style-blink=false
+
+mouse-hide-while-typing=true
+
+window-padding-x=10
+window-padding-y=10
+
+macos-option-as-alt=left
+
+
+auto-update=check
+auto-update-channel=stable
