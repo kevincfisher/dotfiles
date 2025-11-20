@@ -16,6 +16,8 @@ return {
        vim.keymap.set('n', '<leader>fg', builtin.git_files)
        vim.keymap.set('n', '<leader>gs', builtin.grep_string)
        vim.keymap.set('n', '<leader>lg', builtin.live_grep)
+
+       vim.keymap.set('n', '<leader>fc', function() builtin.find_files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config Files" })
     end
   }
 }
