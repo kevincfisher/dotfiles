@@ -21,6 +21,7 @@ return {
 				opts = {},
 			},
 			"folke/lazydev.nvim",
+			"MahanRahmati/blink-nerdfont.nvim",
 		},
 		version = "1.*",
 		opts = {
@@ -34,9 +35,15 @@ return {
 			completion = { documentation = { auto_show = true, auto_show_delay_ms = 500 } },
 
 			sources = {
-				default = { "lsp", "path", "snippets", "lazydev" },
+				default = { "lsp", "path", "snippets", "lazydev", "nerdfont" },
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+					nerdfont = {
+						module = "blink-nerdfont",
+						score_offset = 15,
+						name = "Nerd Fonts",
+						opts = { insert = true },
+					},
 				},
 			},
 			snippets = { preset = "luasnip" },
