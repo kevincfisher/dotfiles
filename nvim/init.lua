@@ -25,9 +25,11 @@ vim.o.scrolloff = 10
 vim.o.list = true
 
 vim.o.confirm = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.expandtab = true
+
 vim.signcolumn = "yes"
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
