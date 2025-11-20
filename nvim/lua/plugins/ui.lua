@@ -56,6 +56,15 @@ return {
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
+	--{
+	--	"folke/drop.nvim",
+	--	event = "VimEnter",
+	--	config = function()
+	--		require("drop").setup({
+	--			screensaver = 1000 * 60,
+	--		})
+	--	end,
+	--},
 	{
 		"savq/melange-nvim",
 		config = function()
