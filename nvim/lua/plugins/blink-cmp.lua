@@ -27,13 +27,10 @@ return {
 		opts = {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = { preset = "default" },
-
 			appearance = {
 				nerd_font_variant = "mono",
 			},
-
 			completion = { documentation = { auto_show = true, auto_show_delay_ms = 500 } },
-
 			sources = {
 				default = { "lsp", "path", "snippets", "lazydev", "nerdfont" },
 				providers = {
@@ -47,9 +44,7 @@ return {
 				},
 			},
 			snippets = { preset = "luasnip" },
-
 			signature = { enabled = true },
-
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },

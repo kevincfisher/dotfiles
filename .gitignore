@@ -1,8 +1,11 @@
-   .ssh/
-   .gnupg/
-   *.pem
-   *.key
-   
-   # OS files
-   .DS_Store
-   Thumbs.db
+.ssh/
+.gnupg/
+*.pem
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+tmux/plugins/
