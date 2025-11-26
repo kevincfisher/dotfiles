@@ -2,7 +2,7 @@
 
 # basic utlity to check if lazygit is installed before proceeding
 # prompt if not. mostly just out of convenience for me
-if [ -z $(which lazygit) ]; then
+if [ -z $(command -v lazygit) ]; then
   echo "lazygit not found.";
   read -p "would you like to install? [y/n] " shouldInstall;
   #TODO: check if brew is installed. If not, maybe install from source
