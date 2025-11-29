@@ -8,4 +8,5 @@
 Thumbs.db
 
 
-tmux/plugins/
+.config/tmux/plugins/
+.config/zsh/.zsh_history
