@@ -6,10 +6,15 @@ export NVM_DIR="$HOME/.nvm"
 
 # add some more stuff to path 
 export PATH=$PATH:$HOME/go/bin
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
+source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval "$(starship init zsh)"
 alias ls="eza --icons=always --hyperlink"
 alias vim=nvim
+alias cat="bat"
 
 setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 
@@ -21,8 +26,7 @@ for _rc in $ZDOTDIR/conf.d/*.zsh; do
 done
 unset _rc
 
+#source zsyles
 if [[ -f "$ZDOTDIR/.zstyles" ]]; then
-    echo ".zstyles found. sourcing..."
     source "$ZDOTDIR/.zstyles"
 fi
-set +x
