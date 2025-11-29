@@ -11,3 +11,5 @@ if (( $+functions[cached-eval] )); then
 else
   source <(zoxide init zsh)
 fi
+
+alias cd="z"

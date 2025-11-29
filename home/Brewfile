@@ -1,0 +1,68 @@
+#-------------------------#
+#  Homebrew 'essentials'  #
+#-------------------------#
+
+tap "homebrew/core"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+
+#--------------#
+#  Fonts etc.  #
+#--------------#
+
+cask "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
+cask "font-symbols-only-nerd-font"
+
+#-------------#
+#  Dev tools  #
+#-------------#
+
+brew "coreutils"
+brew "gh"
+brew "git"
+brew "lazygit"
+brew "lazydocker"
+brew "neovim"
+brew "stow"
+brew "pnpm"
+brew "nvm"
+brew "wget"
+brew "kubectl"
+brew "kafkactl"
+
+#----------------------#
+#  Shell enhancements  #
+#----------------------#
+
+#brew "starship"
+brew "bash"
+brew "kitty"
+brew "tmux"
+brew "zoxide"
+brew "bat"
+brew "eza"
+brew "fzf"
+brew "ripgrep"
+brew "fd"
+brew "yazi"
+brew "zsh-syntax-highlighting"
+brew "zsh-autocomplete"
+
+#-----------------------------------------#
+#  Misc tools/alternatives/nice-to-haves  #
+#-----------------------------------------#
+
+# brew "redis-cli"
+# brew "bitwarden"
+# brew "kubernetes-cli"
+# brew "k9s"
+# brew "helm"
+# brew "docker"
+# brew "tealdear"
+# brew "ffmpeg"
+# brew "mpd"
+# brew "mpc"
+# brew "rmpc"
+# cask "zen"
+# cask "claude-code"
