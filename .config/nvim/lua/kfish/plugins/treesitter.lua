@@ -2,9 +2,21 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = "BufReadPost",
-		dependencies = { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", branch = "master" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
+				sync_install = true,
+				ensure_installed = {
+					"c",
+					"cpp",
+					"lua",
+					"python",
+					"rust",
+					"go",
+				},
+				incremental_selection = {
+					enable = true,
+				},
 				textobjects = {
 					select = {
 						enable = true,
