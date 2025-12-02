@@ -10,11 +10,11 @@ export FZF_ALT_C_COMMAND="fd --type=d --hideen --strip-cwd-prefix --exclude .git
 
 # override path and dir completion commands: https://github.com/junegunn/fzf?tab=readme-ov-file#customizing-completion-source-for-paths-and-directories
 _fzf_compgen_path() {
-  fd --hiden --exclude .git . "$1"
+  fd --hidden --exclude .git . "$1"
 }
 
 #checks whether the highlighted file is a directory, then calls either eza (dir) or bat (file)
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200 ; ekse bat -n --color=always --line-rage :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200 ; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
