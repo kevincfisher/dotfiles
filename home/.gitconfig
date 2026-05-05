@@ -16,3 +16,11 @@
 
 [merge]
   conflictStyle = zdiff3
+
+[alias]
+  findbranch = checkout $(git branch|fzf)
+  last = log -1 HEAD
+  s = status -s
+  sync = !git fetch --all --prune && git pull --rebase
+  br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=committerdate
+  lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
