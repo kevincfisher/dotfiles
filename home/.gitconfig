@@ -21,7 +21,10 @@
   aliases = !git config --global -l | grep alias | bat --color=always -l bash
   #shortcuts
   d = diff
+  a = add
   s = status -s
+  ap = add -p .
+  aa = add -A
   co = checkout
   cm = commit -m
   br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=committerdate
