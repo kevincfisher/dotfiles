@@ -18,9 +18,19 @@
   conflictStyle = zdiff3
 
 [alias]
-  findbranch = checkout $(git branch|fzf)
-  last = log -1 HEAD
+  aliases = !git config --global -l | grep alias | bat --color=always -l bash
+  #shortcuts
+  d = diff
   s = status -s
-  sync = !git fetch --all --prune && git pull --rebase
+  co = checkout
+  cm = commit -m
   br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=committerdate
   lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+  dcache = diff --cached
+  dstat = diff --stat
+  fix = commit --amend
+  last = log -1 HEAD --stat
+  sync = !git fetch --all --prune && git pull --rebase
+  save = !git add -A && git commit -m \"chore: save progress\"
+  rv = remote -v
+  oops = commit --amend --no-edit
