@@ -22,7 +22,7 @@
   #shortcuts
   d = diff
   a = add
-  s = status -s
+  s = status -sb
   ap = add -p .
   aa = add -A
   co = checkout
@@ -37,3 +37,4 @@
   save = !git add -A && git commit -m \"chore: save progress\"
   rv = remote -v
   oops = commit --amend --no-edit
+  undo = reset --soft HEAD~1
