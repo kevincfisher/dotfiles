@@ -38,7 +38,7 @@ return {
 		"astro",
 	},
 	root_dir = function(bufnr, on_dir)
-		local fname = vim.api.nvim_get_buf_name(bufnr)
+		local fname = vim.api.nvim_buf_get_name(bufnr)
 		--Stop at $HOME to prevent directing oxlint configs outside the project
 		local stop = vim.fs.dirname(vim.fn.expand("$HOME"))
 		local marker = vim.fs.find({
@@ -67,7 +67,7 @@ return {
 		-- tsConfigPath = nil,
 		-- unusedDisableDirective = 'allow',
 		-- typeAware = false,
-		-- disableNestedConfig = falsem
+		-- disableNestedConfig = false
 		fixKind = "safe_fix",
 	},
 	before_init = function(init_params, config)

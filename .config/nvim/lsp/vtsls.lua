@@ -1,24 +1,24 @@
 local ROOT_MARKERS = { "tsconfig.json", "jsconfig.json", "package.json", ".git" }
 
-local _vtsls_cmd = nil
 local function get_vtsls_cmd()
-	if _vtsls_cmd then
-		return _vtsls_cmd
+	local bin = vim.fn.exepath("vtsls")
+	if bin ~= "" then
+		return { bin, "--stdio" }
 	end
-	local handle = io.popen("node --version 2>/dev/null")
+	-- nvm fallback: walk common nvm node versions to find vtsls
+	local nvm_dir = os.getenv("NVM_DIR") or (os.getenv("HOME") .. "/.nvm")
+	local handle = io.popen('ls "' .. nvm_dir .. '/versions/node" 2>/dev/null | sort -rV | head -1')
 	if handle then
-		local version = handle:read("*l")
+		local latest = handle:read("*l")
 		handle:close()
-		if version then
-			local major = tonumber(version:match("^v?(%d+)"))
-			if major and major >= 20 then
-				_vtsls_cmd = { "vtsls", "--stdio" }
-				return _vtsls_cmd
+		if latest then
+			local candidate = nvm_dir .. "/versions/node/" .. latest .. "/bin/vtsls"
+			if vim.fn.filereadable(candidate) == 1 then
+				return { candidate, "--stdio" }
 			end
 		end
 	end
-	_vtsls_cmd = { "fnm", "exec", "--using=24", "vtsls", "--stdio" }
-	return _vtsls_cmd
+	return { "vtsls", "--stdio" }
 end
 
 return {
@@ -50,7 +50,7 @@ return {
 		end
 
 		local workspace_root = vim.fs.dirname(vim.fs.find(ROOT_MARKERS, { path = fname, upward = true })[1])
-		on_dir(workspace_root or vim.fn.get_cwd())
+		on_dir(workspace_root or vim.fn.getcwd())
 	end,
 	settings = {
 		complete_function_calls = true,

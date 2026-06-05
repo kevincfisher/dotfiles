@@ -16,3 +16,27 @@
 
 [merge]
   conflictStyle = zdiff3
+
+
+[alias]
+  la = !git config --global -l | grep alias | bat --color=always -l bash
+  d = diff
+  s = status -sb
+  st = status
+  ap = add -p .
+  aa = add -A
+  co = checkout
+  cm = commit -m
+  br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) by [%(authorname)]' --sort=-committerdate
+  lg = !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) by %an\" --abbrev-commit -30
+  nb = !git switch -c
+  dcache = diff --cached
+  dstat = diff --stat
+  fix = commit --amend
+  last = log -1 HEAD --stat
+  sync = !git fetch --all --prune && git pull --rebase
+  save = !git add -A && git commit -m \"chore: save progress\"
+  rv = remote -v
+  oops = commit --amend --no-edit
+  undo = reset --soft HEAD~1
+  rename = !git branch -m 

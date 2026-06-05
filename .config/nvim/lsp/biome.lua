@@ -7,7 +7,7 @@ return {
 		if local_cmd and vim.fn.executable(local_cmd) == 1 then
 			cmd = local_cmd
 		end
-		vim.lsp.rpc.start({ cmd, "lsp-proxy" }, dispatchers)
+		return vim.lsp.rpc.start({ cmd, "lsp-proxy" }, dispatchers)
 	end,
 	filetypes = {
 		"astro",
@@ -28,7 +28,7 @@ return {
 	root_dir = function(_, on_dir)
 		--To support monorepos, biome recommends starting the search for the root from the cwd
 		--https://biomejs.dev/guides/big-projects/#use-multiple-configuration-files
-		local cwd = vim.fn.get_cwd()
+		local cwd = vim.fn.getcwd()
 		local root_dir = vim.fs.dirname(vim.fs.find(BIOME_CONFIG, { path = cwd, upward = true })[1])
 		on_dir(root_dir)
 	end,

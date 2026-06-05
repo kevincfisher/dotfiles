@@ -11,3 +11,6 @@ Thumbs.db
 .config/tmux/plugins/
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump
+.config/zsh/.disabled
+#workstation-specific functions
+.config/zsh/_functions/
