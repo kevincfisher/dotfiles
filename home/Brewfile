@@ -1,11 +1,3 @@
-#-------------------------#
-#  Homebrew 'essentials'  #
-#-------------------------#
-
-tap "homebrew/core"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-
 #--------------#
 #  Fonts etc.  #
 #--------------#
@@ -38,7 +30,7 @@ brew "kafkactl"
 
 #brew "starship"
 brew "bash"
-brew "kitty"
+cask "kitty"
 brew "tmux"
 brew "zoxide"
 brew "bat"

@@ -70,8 +70,8 @@ return {
 		end
 
 		-- find workspace root to limit ESLint config search
-		local workspace_root = vim.fs.root(bufnr, WORKSPACE_ROOT_PATTERNS) or vim.fn.get_cwd()
-		local stop_dir = vim.fs.dir_name(workspace_root)
+		local workspace_root = vim.fs.root(bufnr, WORKSPACE_ROOT_PATTERNS) or vim.fn.getcwd()
+		local stop_dir = vim.fs.dirname(workspace_root)
 
 		-- Only activate if flat config exists (ESLint 9+)
 		local eslint_config = vim.fs.find(ESLINT_FLAT_CONFIG, { path = fname, upward = true, stop = stop_dir })[1]
@@ -150,9 +150,9 @@ return {
 			end
 			return 4 -- approved
 		end,
-    ["eslint/probeFailed"] = function() 
-      vim.notify("[lspconfig] ESLint probe failed.", vim.log.levels.WARN)
-      return {}
-    end
+		["eslint/probeFailed"] = function()
+			vim.notify("[lspconfig] ESLint probe failed.", vim.log.levels.WARN)
+			return {}
+		end,
 	},
 }

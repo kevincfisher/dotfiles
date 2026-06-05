@@ -1,4 +1,7 @@
 #/usr/bin/env zsh
+# @description Fuzzy finder with fd integration and smart previews
+# @category tools
+# @depends fzf, fd, bat, eza
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -6,7 +9,7 @@ eval "$(fzf --zsh)"
 # Override default fzf command to use fd
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hideen --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 # override path and dir completion commands: https://github.com/junegunn/fzf?tab=readme-ov-file#customizing-completion-source-for-paths-and-directories
 _fzf_compgen_path() {

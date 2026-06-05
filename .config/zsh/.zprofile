@@ -25,3 +25,7 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/Users/kevin.fisher/Library/Application Support/Coursier/bin"
+# <<< coursier install directory <<<

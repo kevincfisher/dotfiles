@@ -1,3 +1,7 @@
+# @description Yazi file manager wrapper that syncs cwd on exit
+# @category tools
+# @depends yazi
+
 # change directories when exiting yazi
 y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

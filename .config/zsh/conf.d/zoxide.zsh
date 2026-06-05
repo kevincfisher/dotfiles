@@ -1,5 +1,8 @@
+# @description Smart cd replacement with frecency-based directory jumping
+# @category navigation
+# @depends zoxide
 
-# from https://github.com/mattmc3/zdotdir/ 
+# from https://github.com/mattmc3/zdotdir/
 # detect, init or load cached zoxide init
 if ! (( $+commands[zoxide] )); then
   echo "zoxide not found" >&2
