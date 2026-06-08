@@ -5,6 +5,6 @@ vim.pack.add({
 
 
 vim.keymap.set("n", "<leader>mp", function()
-vim.fn["mkdp#util#inst``all"]()
+vim.fn["mkdp#util#install"]()
 vim.cmd("MarkdownPreviewToggle")
 end, { desc = "Markdown preview" })

@@ -15,6 +15,11 @@ fzf.setup({
 			["<C-u>"] = 'preview-page-up',
 		},
   },
+  previewers = {
+    bat = {
+      theme = "TwoDark",
+    },
+  },
   winopts = {
     preview = {
       default = "bat"
