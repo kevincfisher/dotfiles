@@ -1,0 +1,150 @@
+#!/usr/bin/env zsh
+# zmod - toggle zsh modules on/off
+#
+# Modules are .zsh files in conf.d/, functions/, or _functions/.
+# Disabled modules are tracked in ~/.config/zsh/.disabled (one name per line).
+# New files dropped into any of those directories are enabled by default.
+#
+# Module metadata is defined via comment headers in each .zsh file:
+#   # @description  Short description of what the module does
+#   # @category     Grouping label (e.g. tools, kubernetes, cloud)
+#   # @depends      Comma-separated list of required binaries
+#
+# Usage:
+#   zmod list              - show all modules with descriptions
+#   zmod info <module>     - show full metadata for a module
+#   zmod enable <module>   - enable a module
+#   zmod disable <module>  - disable a module
+#   zmod reload            - exec into a fresh shell (full reload)
+#   zmod reload <module>   - re-source a single module in-place
+
+ZMOD_DIR="${HOME}/.config/zsh"
+ZMOD_DISABLED_FILE="${ZMOD_DIR}/.disabled"
+
+zmod() {
+  local cmd="$1" mod="$2"
+
+  case "$cmd" in
+    list|ls)
+      local f name desc state
+      for f in "$ZMOD_DIR"/{conf.d,functions,_functions}/*.zsh(N); do
+        name="${f:t:r}"
+        desc="$(_zmod_meta "$f" description)"
+        if _zmod_is_disabled "$name"; then
+          state="\e[31mdisabled\e[0m"
+        else
+          state="\e[32menabled\e[0m"
+        fi
+        printf "  %-18s [$state] %s\n" "$name" "${desc:-(no description)}"
+      done
+      ;;
+    info)
+      [[ -z "$mod" ]] && { echo "Usage: zmod info <module>"; return 1; }
+      local f
+      f="$(_zmod_find "$mod")"
+      [[ -z "$f" ]] && { echo "Unknown module '$mod'"; return 1; }
+
+      local desc cat deps state
+      desc="$(_zmod_meta "$f" description)"
+      cat="$(_zmod_meta "$f" category)"
+      deps="$(_zmod_meta "$f" depends)"
+
+      if _zmod_is_disabled "$mod"; then
+        state="\e[31mdisabled\e[0m"
+      else
+        state="\e[32menabled\e[0m"
+      fi
+
+      echo ""
+      printf "  \e[1m%s\e[0m [$state]\n" "$mod"
+      echo "  ──────────────────────────────"
+      [[ -n "$desc" ]] && printf "  description : %s\n" "$desc"
+      [[ -n "$cat" ]]  && printf "  category    : %s\n" "$cat"
+      [[ -n "$deps" ]] && printf "  depends     : %s\n" "$deps"
+      printf "  file        : %s\n" "$f"
+      echo ""
+
+      # Check if dependencies are available
+      if [[ -n "$deps" ]]; then
+        local dep missing=()
+        for dep in ${(s:, :)deps}; do
+          (( $+commands[$dep] )) || missing+=("$dep")
+        done
+        if (( ${#missing} )); then
+          printf "  \e[33m⚠ missing: %s\e[0m\n\n" "${(j:, :)missing}"
+        fi
+      fi
+      ;;
+    enable)
+      [[ -z "$mod" ]] && { echo "Usage: zmod enable <module>"; return 1; }
+      if ! _zmod_exists "$mod"; then
+        echo "Unknown module '$mod'"
+        return 1
+      fi
+      if _zmod_is_disabled "$mod"; then
+        sed -i '' "/^${mod}$/d" "$ZMOD_DISABLED_FILE"
+        echo "Enabled '$mod' — run 'zmod reload' to apply"
+      else
+        echo "'$mod' is already enabled"
+      fi
+      ;;
+    disable)
+      [[ -z "$mod" ]] && { echo "Usage: zmod disable <module>"; return 1; }
+      if ! _zmod_exists "$mod"; then
+        echo "Unknown module '$mod'"
+        return 1
+      fi
+      if _zmod_is_disabled "$mod"; then
+        echo "'$mod' is already disabled"
+      else
+        echo "$mod" >> "$ZMOD_DISABLED_FILE"
+        echo "Disabled '$mod' — run 'zmod reload' to apply"
+      fi
+      ;;
+    reload)
+      if [[ -z "$mod" ]]; then
+        echo "Reloading shell..."
+        exec zsh
+      else
+        # Re-source a single module in-place
+        local f
+        f="$(_zmod_find "$mod")"
+        [[ -z "$f" ]] && { echo "Unknown module '$mod'"; return 1; }
+        if _zmod_is_disabled "$mod"; then
+          echo "'$mod' is disabled — enable it first"
+          return 1
+        fi
+        echo "Reloading '$mod'..."
+        source "$f"
+      fi
+      ;;
+    *)
+      echo "Usage: zmod {list|info|enable|disable|reload} [module]"
+      return 1
+      ;;
+  esac
+}
+
+# Parse a @key value from the comment header of a module file
+_zmod_meta() {
+  local file="$1" key="$2"
+  sed -n "s/^# @${key}  *//p" "$file" | head -1
+}
+
+_zmod_is_disabled() {
+  [[ -f "$ZMOD_DISABLED_FILE" ]] && grep -qxF "$1" "$ZMOD_DISABLED_FILE"
+}
+
+_zmod_exists() {
+  [[ -n "$(_zmod_find "$1")" ]]
+}
+
+# Return the full path of a module by name
+_zmod_find() {
+  local f
+  for f in "$ZMOD_DIR"/{conf.d,functions,_functions}/${1}.zsh(N); do
+    echo "$f"
+    return 0
+  done
+  return 1
+}
