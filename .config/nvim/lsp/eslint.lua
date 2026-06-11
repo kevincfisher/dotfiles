@@ -71,7 +71,7 @@ return {
 
 		-- find workspace root to limit ESLint config search
 		local workspace_root = vim.fs.root(bufnr, WORKSPACE_ROOT_PATTERNS) or vim.fn.getcwd()
-		local stop_dir = vim.fs.dirname(workspace_root)
+		local stop_dir = vim.fs.dir_name(workspace_root)
 
 		-- Only activate if flat config exists (ESLint 9+)
 		local eslint_config = vim.fs.find(ESLINT_FLAT_CONFIG, { path = fname, upward = true, stop = stop_dir })[1]

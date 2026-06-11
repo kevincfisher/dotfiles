@@ -102,12 +102,14 @@ vim.lsp.enable({
 	"eslint",
 	"biome",
 	"lua_ls",
+	"shellcheck",
+	"bashls",
 	"gopls",
-  "harper_ls",
+	"harper_ls",
 	"rust_analyzer",
 	"zls",
 	"jsonls",
 	"oxfmt",
 	"stylua",
-  "terraform-ls"
+	"terraform-ls",
 })

@@ -1,11 +1,41 @@
-vim.cmd("syntax off")
+vim.cmd('syntax off')
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = "*",
+--   callback = function(args)
+--     local buf = args.buf
+--     local ft = vim.bo[buf].filetype
+--     vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+--     vim.wo[0][0].foldmethod = 'expr'
+--
+--     local lang = vim.treesitter.language.get_lang(ft)
+--     if not lang then
+--       return
+--     end
+--
+--     local ok_add = pcall(vim.treesitter.language.add, lang)
+--     if not ok_add then
+--       return
+--     end
+--
+--     pcall(vim.treesitter.start, buf, lang)
+--   end,
+-- })
 
-local function maybe_archive_lsp_log()
-	local log_path = vim.lsp.log.get_filename()
-	local stat = vim.uv.fs_stat(log_path)
-	if not stat then
-		return
-	end
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   group = vim.api.nvim_create_augroup('my.lsp', { clear = true }),
+--   callback = function (ev)
+--     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+--     if not client:supports_method('textDocument/withSaveWaitUntil') and client:supports_method('textDocument/formatter') then
+--       vim.api.nvim_create_autocmd('BufPreWrite', {
+--         group = vim.api.nvim_create_augroup("my.lsp.fmt", { clear = false }),
+--         buffer = ev.buf,
+--         callback = function()
+--           vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+--         end
+--       })
+--     end
+--   end,
+-- })
 
 	local size_mb = stat.size / (1024 * 1024)
 	if size_mb < 100 then

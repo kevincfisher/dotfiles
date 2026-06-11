@@ -24,6 +24,7 @@ require("nvim-treesitter").install({
 	"go",
 	"gomod",
 	"gosum",
+  "gotmpl",
 	"gowork",
 	"html",
 	"ini",
@@ -73,7 +74,7 @@ require("nvim-treesitter-textobjects").setup({
 	},
 })
 
--- Select key binds
+-- Select keybinds
 local sel = require("nvim-treesitter-textobjects.select")
 for _, map in ipairs({
 	{ { "x", "o" }, "af", "@function.outer" },

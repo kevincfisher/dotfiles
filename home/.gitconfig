@@ -3,6 +3,9 @@
 	name = Kevin Fisher
   email = kevincliffordfisher@gmail.com
 
+[init]
+  defaultBranch = main
+
 [core]
   pager = delta
 

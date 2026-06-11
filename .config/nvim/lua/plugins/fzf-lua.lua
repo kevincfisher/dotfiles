@@ -31,6 +31,10 @@ vim.keymap.set("n", "<leader>fx", fzf.diagnostics_document, { desc = "Fuzzy Find
 vim.keymap.set("n", "<leader>fX", fzf.diagnostics_workspace, { desc = "Fuzzy Find Diagnostics - Workspace" })
 vim.keymap.set("n", "<leader>fc", fzf.colorschemes, { desc = "Select Theme"})
 
+-- Convenience binds
+vim.keymap.set("n", "<leader>fs", function() fzf.files({ cwd = "~/.config/nvim", prompt = "Neovim Config" }) end, { desc = "Search Editor Config" })
+
+
 vim.keymap.set("n", "grr", fzf.lsp_references, { desc = "References" })
 vim.keymap.set("n", "gri", fzf.lsp_implementations, { desc = "Implementations" })
 vim.keymap.set("n", "gra", fzf.lsp_code_actions, { desc = "Code Actions" })
