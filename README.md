@@ -72,11 +72,12 @@ This will create symlinks:
 - `~/.gitconfig` → `~/dotfiles/home/.gitconfig`
 - etc.
 
-> NOTE: in order for zsh to bootstrap properly, you should ensure you have a minimal .zshenv file in your $HOME directory with the following:
-
-```bash
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
-```
+>[!NOTE] 
+> in order for zsh to bootstrap properly, you should ensure you have a minimal .zshenv file in your $HOME directory with the following:
+>
+> ```bash
+> export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+> ```
 
 I'm too stupid to come up with an alternative at the moment but this does the trick
 
