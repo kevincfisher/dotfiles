@@ -112,13 +112,6 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
---autoclose pairs
-map("i", "`", "``<left>")
-map("i", '"', '""<left>')
-map("i", "(" , "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
-map("i", "<", "<><left>")
 
 
 --================

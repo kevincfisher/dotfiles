@@ -18,6 +18,7 @@ return {
 		"astro-markdown",
 		"blade",
 		"clojure",
+    "conf",
 		"django-html",
 		"htmldjango",
 		"edge",

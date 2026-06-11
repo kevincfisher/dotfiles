@@ -1,13 +1,12 @@
-vim.cmd("syntax off")
+vim.cmd('syntax off')
 
-local function maybe_archive_lsp_log()
+	local function maybe_archive_lsp_log()
 	local log_path = vim.lsp.log.get_filename()
 	local stat = vim.uv.fs_stat(log_path)
 	if not stat then
 		return
 	end
-
-	local size_mb = stat.size / (1024 * 1024)
+local size_mb = stat.size / (1024 * 1024)
 	if size_mb < 100 then
 		return
 	end

@@ -18,6 +18,15 @@ source "$_brew_prefix/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$_brew_prefix/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 unset _brew_prefix
 
+alias mygit="~/git/codecrafters-git-rust/your_program.sh"
+
+alias gt="git"
+alias ga="git add -p ."
+alias gs="git status -s"
+alias gc="git commit -m"
+alias glog="git log --oneline --graph --all"
+alias gsync="git fetch --all --prune && git pull --rebase"
+
 setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
@@ -45,7 +54,14 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-export PATH="$HOME/.local/bin:$PATH"
 
 # bun completions
-[ -s "/Users/kevin.fisher/.bun/_bun" ] && source "/Users/kevin.fisher/.bun/_bun"
+[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
+
+# pnpm
+export PNPM_HOME="/Users/kevin/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
