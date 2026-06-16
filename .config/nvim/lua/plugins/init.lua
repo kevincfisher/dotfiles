@@ -1,4 +1,5 @@
 require("plugins.alpha")
+require("plugins.dap")
 require("plugins.colors")
 require("plugins.blink-cmp")
 require("plugins.fzf-lua")

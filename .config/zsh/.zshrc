@@ -19,7 +19,7 @@ setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 source "$ZDOTDIR/bin/zmod"
 
 # Source tools, aliases, and helpers. Inspired by https://github.com/mattmc3's zsh config
-for _rc in $ZDOTDIR/{conf.d,functions}/*.sh(N); do
+for _rc in $ZDOTDIR/{conf.d,functions}/*.{zsh,sh}(N); do
   [[ "${_rc:t}" != '~'* ]] || continue
   _zmod_is_disabled "${_rc:t:r}" && continue
   source "$_rc"
