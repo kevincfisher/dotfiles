@@ -1,15 +1,11 @@
 vim.pack.add({
-  "https://github.com/catgoose/nvim-colorizer.lua",
-  "https://github.com/max397574/colortils.nvim"
+"https://github.com/brenoprata10/nvim-highlight-colors"
 })
 
-local colorizer = require("colorizer")
-local colortils = require ("colortils")
-
-colorizer.setup({
-  "*",
-  css = { rgb_fn = true; },
-  html = { names = false; }
+local highlight_colors = require("nvim-highlight-colors")
+highlight_colors.setup({
+  render="virtual",
+  virtual_symbol="󰧞",
+  virtual_symbol_position="inline",
+  enable_named_colors=false
 })
-
-colortils.setup()

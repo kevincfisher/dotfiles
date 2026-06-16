@@ -43,7 +43,7 @@ oil.setup({
     }
   },
   win_options = {
-    winbar = "%#CurSearch#%{substitute(v:lua.require('oil').get_current_dir(),'^' . $HOME, '~', '')}",
+    winbar = " %#CurSearch#%{substitute(v:lua.require('oil').get_current_dir(),'^' . $HOME, '~', '')}",
   }
 })
 

@@ -74,9 +74,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end
 			end
 
-			if client:supports_method("textDocument/documentColor") then
-				vim.lsp.document_color.enable(true, { bufnr = buf }, { style = "virtual" })
-			end
+			-- if client:supports_method("textDocument/documentColor") then
+			-- 	vim.lsp.document_color.enable(true, { bufnr = buf }, { style = "virtual" })
+			-- end
 
 			for _, km in ipairs(default_keymaps) do
 				-- Only bind if there's no `has` requirement or the server supports it.

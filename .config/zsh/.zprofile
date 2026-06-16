@@ -12,14 +12,21 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # History
 HISTFILE="$XDG_CACHE_HOME/zsh/.zhistory"
 HISTSIZE=10000
-SAVEHIST=10000
+SAVEHIST=20000
 
-setopt share_history
-setopt append_history
-setopt inc_append_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
+if [[ ! -f "$HISTFILE" ]]; then
+  touch $HISTFILE
+    chmod 600 $HISTFILE
+fi
+
+setopt appendhistory
+setopt extendedhistory
+setopt sharehistory
+setopt incappendhistory
+setopt histexpiredupsfirst
+setopt histignoredups
+setopt histignorespace
+setopt histverify
 
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward

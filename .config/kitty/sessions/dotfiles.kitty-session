@@ -1,0 +1,7 @@
+layout tall
+
+cd ~/git/dotfiles
+
+launch --title "dotfiles" /bin/zsh -i -c 'vim'
+focus window
+focus os-window

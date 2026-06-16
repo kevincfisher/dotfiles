@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "streaming": 100,
+  "palette": {
+    "black": "#393552",
+    "brightblack": "#6e6a86",
+    "red": "#eb6f92",
+    "green": "#3e8fb0",
+    "yellow": "#f6c177",
+    "blue": "#9ccfd8",
+    "magenta": "#c4a7e7",
+    "cyan": "#ea9a97",
+    "white": "#e0def4"
+  },
+  "maps": {
+    "user_name": {
+      "kevin": "kfish",
+      "kevin.fisher": "kfish"
+    },
+    "host_name": {
+      "Kevins-Laptop": "home",
+      "Kevin---Work-MBP.local": "work"
+    }
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "p:magenta",
+          "template": "╭[ {{ .Icon }} ] ",
+          "options": {
+            "macos": ""
+          }
+        },
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "background": "p:magenta",
+          "foreground": "p:black",
+          "template": " {{.UserName}} @ {{.HostName}} "
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          
+          "options": {
+            "fetch_status": true,
+            "fetch_push_status": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "filler": "<p:brightblack>-</>",
+      "segments": [
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "background": "p:red",
+          "foreground": "p:black",
+          "template": "\uf017 {{ .CurrentDate | date .Format }}",
+          "options": {
+            "time_format": "Kitchen"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#FFB6C1",
+          "template": "<p:magenta>╰</>  "
+        }
+      ]
+    }
+  ]
+}

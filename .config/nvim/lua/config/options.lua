@@ -136,6 +136,10 @@ vim.filetype.add({
   },
 })
 
+local normal_hl = vim.api.nvim_get_hl(0, {name = "Normal"})
+local transparent_hl = vim.tbl_extend("force", normal_hl, { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "Normal", transparent_hl)
+
 vim.api.nvim_create_autocmd('TextYankPost', {
 	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
 	callback = function() vim.highlight.on_yank() end

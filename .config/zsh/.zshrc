@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
@@ -20,22 +13,13 @@ unset _brew_prefix
 
 alias mygit="~/git/codecrafters-git-rust/your_program.sh"
 
-alias gt="git"
-alias ga="git add -p ."
-alias gs="git status -s"
-alias gc="git commit -m"
-alias glog="git log --oneline --graph --all"
-alias gsync="git fetch --all --prune && git pull --rebase"
-
 setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # zmod — modular config loader with enable/disable support
 source "$ZDOTDIR/bin/zmod"
 
 # Source tools, aliases, and helpers. Inspired by https://github.com/mattmc3's zsh config
-for _rc in $ZDOTDIR/{conf.d,functions}/*.zsh(N); do
+for _rc in $ZDOTDIR/{conf.d,functions}/*.sh(N); do
   [[ "${_rc:t}" != '~'* ]] || continue
   _zmod_is_disabled "${_rc:t:r}" && continue
   source "$_rc"
@@ -52,16 +36,22 @@ if [[ -f "$ZDOTDIR/.zstyles" ]]; then
   source "$ZDOTDIR/.zstyles"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
 # bun completions
-[ -s "/Users/kevin/.bun/_bun" ] && source "/Users/kevin/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # pnpm
-export PNPM_HOME="/Users/kevin/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+if command -v nvim &>/dev/null; then
+  export MANPAGER="nvim +Man!"
+  export MANWIDTH=999
+fi
+
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.json)"
+
+. "$HOME/.local/share/../bin/env"

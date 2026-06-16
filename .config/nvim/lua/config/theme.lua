@@ -2,7 +2,8 @@ vim.pack.add({
   "https://github.com/rebelot/kanagawa.nvim",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/rose-pine/neovim",
-  "https://github.com/EdenEast/nightfox.nvim"
+  "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/xiyaowong/transparent.nvim"
 })
 
 local kanagawa = require('kanagawa')
@@ -33,6 +34,6 @@ nightfox.setup({
   },
 })
 -- Default theme
-vim.cmd('colorscheme kanagawa-lotus')
+vim.cmd('colorscheme rose-pine')
 
 
