@@ -55,6 +55,7 @@ require("nvim-treesitter").install({
 	"xml",
 	"yaml",
 	"zig",
+	"zsh",
 })
 
 require("nvim-treesitter-textobjects").setup({
