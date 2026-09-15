@@ -13,6 +13,5 @@ require("plugins.lualine");
 require("plugins.neoscroll")
 require("plugins.markdown")
 require("plugins.nvim-jump")
---require("plugins.oil")
 require("plugins.treesitter")
 require("plugins.which-key")
