@@ -9,7 +9,7 @@
       "src": "https://github.com/goolord/alpha-nvim"
     },
     "blink.cmp": {
-      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "rev": "13e7b50e7ba73ce781459da68d346925adfdb530",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
@@ -70,11 +70,11 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "markview.nvim": {
-      "rev": "3d8f68812262b516d533acf603c2ecaf72f8edb5",
+      "rev": "576e50fa99091ff47a9920e1b6ef94b2a7c2f036",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mini.icons": {
-      "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
+      "rev": "284509648db084c5e40a31afa9abb9887c49e04a",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "mini.notify": {
@@ -166,6 +166,10 @@
     "rose-pine": {
       "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
       "src": "https://github.com/rose-pine/neovim"
+    },
+    "tiny-code-action.nvim": {
+      "rev": "0d040ed81f7953118b81cd12681fcdfcac069803",
+      "src": "https://github.com/rachartier/tiny-code-action.nvim"
     },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",

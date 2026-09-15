@@ -20,6 +20,8 @@
 [merge]
   conflictStyle = zdiff3
 
+[pull]
+  recurseSubmodules = true
 
 [alias]
   la = !git config --global -l | grep alias | bat --color=always -l bash
