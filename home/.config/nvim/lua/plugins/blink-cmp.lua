@@ -1,9 +1,6 @@
 vim.pack.add({
   'https://github.com/saghen/blink.lib',
-  {
-    src = "https://github.com/saghen/blink.cmp",
-    version = vim.version.range("1.*"),
-  },
+  "https://github.com/saghen/blink.cmp"
 })
 
 local blink = require("blink.cmp")
@@ -12,8 +9,9 @@ local group = vim.api.nvim_create_augroup("BlinkCmpLazyLoad", { clear = true })
 vim.api.nvim_create_autocmd("InsertEnter", {
   pattern = "*",
   group = group,
-  once = true,
-  callback = function()
+ once = true,
+ callback = function()
+    blink.build():pwait()
     blink.setup({
       keymap = { preset = "default" },
       appearance = {
@@ -22,6 +20,15 @@ vim.api.nvim_create_autocmd("InsertEnter", {
       },
       completion = {
         documentation = { auto_show = false },
+        menu = {
+          border = "rounded"
+        }
+      },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded"
+        }
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
