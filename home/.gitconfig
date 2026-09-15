@@ -20,6 +20,8 @@
 [merge]
   conflictStyle = zdiff3
 
+[pull]
+  recurseSubmodules = true
 
 [alias]
   la = !git config --global -l | grep alias | bat --color=always -l bash
@@ -42,4 +44,5 @@
   rv = remote -v
   oops = commit --amend --no-edit
   undo = reset --soft HEAD~1
-  rename = !git branch -m 
+  rename = !git branch -m
+  browse = "!f() { URL=$(git config remote.${1-origin}.url | sed -e 's#^.*@#https://#' -e 's#.git$##' -e 's#:#/#2'); git web--browse --browser ${BROWSER:-open} $URL; }; f"

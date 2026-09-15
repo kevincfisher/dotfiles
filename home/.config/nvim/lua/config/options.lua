@@ -52,11 +52,11 @@ opt.updatetime = 300
 opt.timeoutlen = vim.g.vscode and 1000 or 300
 opt.ttimeoutlen = 0
 opt.autoread = true
-opt.autowrite = true 
+opt.autowrite = true
 
 -- Editor Behaviors
 opt.hidden = true
-opt.errorbells = false 
+opt.errorbells = false
 opt.backspace = "indent,eol,start"
 opt.autochdir = false
 opt.iskeyword:append("-")
@@ -78,7 +78,7 @@ opt.grepprg = "rg --vimgrep"
 
 -- Split behavior
 opt.splitbelow = true
-opt.splitright = true 
+opt.splitright = true
 opt.splitkeep = "screen"
 
 -- command-line completion
@@ -121,7 +121,7 @@ opt.shortmess:append({ W = true, I = true, c = true, C = true }) --disable some 
 
 vim.g.markdown_recommended_style = 0
 
--- additional file support 
+-- additional file support
 vim.filetype.add({
   extension = {
     env = "dotenv",
@@ -136,7 +136,3 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-	callback = function() vim.highlight.on_yank() end
-})

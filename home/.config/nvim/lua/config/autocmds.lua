@@ -55,20 +55,8 @@ local size_mb = stat.size / (1024 * 1024)
 	end)
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("my.lsp.theme", { clear = true }),
-	callback = function()
-		maybe_archive_lsp_log()
-		local current_time = os.time()
-		local hour = tonumber(os.date("%H", current_time))
-		local fmt_time = os.date("%I:%M %p", current_time)
-
-		if hour > 0 and hour <= 11 then
-			vim.notify("Good morning, it is " .. fmt_time)
-		elseif hour > 11 and hour <= 18 then
-			vim.notify("Good afternoon, it is " .. fmt_time)
-		else
-			vim.notify("Good evening, it is " .. fmt_time)
-		end
-	end,
+vim.api.nvim_create_autocmd('TextYankPost', {
+	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+	callback = function() vim.highlight.on_yank() end
 })
+
