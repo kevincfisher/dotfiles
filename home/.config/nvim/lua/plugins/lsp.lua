@@ -97,12 +97,12 @@ local ts_server = vim.g.lsp_typescript_server or "vtsls"
 
 -- Enable LSP servers
 vim.lsp.enable({
+	"tsc",
 	ts_server,
 	"oxlint",
 	"eslint",
 	"biome",
 	"lua_ls",
-	"shellcheck",
 	"bashls",
 	"gopls",
 	"harper_ls",

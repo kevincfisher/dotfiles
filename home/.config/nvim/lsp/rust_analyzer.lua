@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "rust_analyzer" },
+  cmd = { "rust-analyzer" },
   filetypes = { "rust" },
   root_markers = { "Cargo.toml", "rust-project.json" },
   settings = {
