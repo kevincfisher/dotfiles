@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-vim.api.nvim_set_hl(0, "DapBreakpointSign", { fg = "#ff0000", bg = nil, bold = true })
+vim.api.nvim_set_hl(0, "DapBreakpointSign", { fg = "red", bg = nil, bold = true })
 vim.fn.sign_define("DapBreakpoint", {
 	text = "●",
 	texthl = "DapBreakpointSign",
