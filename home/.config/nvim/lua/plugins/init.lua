@@ -11,7 +11,9 @@ require("plugins.navigation")
 require("plugins.notify")
 require("plugins.lualine");
 require("plugins.neoscroll")
-require("plugins.markdown")
 require("plugins.nvim-jump")
 require("plugins.treesitter")
+require("plugins.markdown")
 require("plugins.which-key")
+
+

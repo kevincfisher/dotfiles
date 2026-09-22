@@ -1,10 +1,14 @@
 vim.pack.add({
-  "https://github.com/OXY2DEV/markview.nvim",
-  "https://github.com/iamcco/markdown-preview.nvim",
+  "http://github.com/MeanderingProgrammer/render-markdown.nvim",
 })
 
+require("render-markdown").setup({
+  completions = { lsp = { enabled = true } }
+})
 
-vim.keymap.set("n", "<leader>mp", function()
-vim.fn["mkdp#util#inst``all"]()
-vim.cmd("MarkdownPreviewToggle")
-end, { desc = "Markdown preview" })
+vim.keymap.set("n", "<leader>md", function ()
+  require("render-markdown").toggle()
+end, { desc = "Toggle Render Markdown" })
+vim.keymap.set("n", "<leader>mp", function ()
+  require("render-markdown").preview()
+end, { desc = "Preview Markdown" })
