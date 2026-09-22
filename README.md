@@ -72,7 +72,7 @@ This will create symlinks:
 - `~/.gitconfig` → `~/dotfiles/home/.gitconfig`
 - etc.
 
->[!NOTE] 
+>[!NOTE]
 > in order for zsh to bootstrap properly, you should ensure you have a minimal .zshenv file in your $HOME directory with the following:
 >
 > ```bash

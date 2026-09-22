@@ -8,6 +8,7 @@
 
 [core]
   pager = delta
+  editor = nvim
 
 [interactive]
   diffFilter = delta --color-only
@@ -22,6 +23,8 @@
 
 [pull]
   recurseSubmodules = true
+[rerere]
+  enabled = true
 
 [alias]
   la = !git config --global -l | grep alias | bat --color=always -l bash
