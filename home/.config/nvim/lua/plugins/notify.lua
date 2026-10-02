@@ -5,11 +5,14 @@ vim.pack.add({
   "https://github.com/rcarriga/nvim-notify",
 })
 
-require("notify")
+require("notify").setup({
+  background_colour = '#000000'
+})
+
 local noice = require("noice")
 
 noice.setup({
-  presets = { 
+  presets = {
     command_palette = true
   }
 })
