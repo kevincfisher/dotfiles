@@ -23,6 +23,10 @@
 
 [pull]
   recurseSubmodules = true
+
+[submodule]
+  recurse = true
+
 [rerere]
   enabled = true
 
